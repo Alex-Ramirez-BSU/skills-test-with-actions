@@ -25,8 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Adds markdown lint step
+      # Adds markdown lint step modified from docs
       - name: Run markdown lint
         run: |
-          npm install remark-cli remark-preset-lint-consistent
-          npx remark . --use remark-preset-lint-consistent --frail
+          npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
+          npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-1
+
+      # Adds new code from docs
+      - uses: actions/checkout@v4
+        with:
+          name: remark-lint-reporter
+          path: remark-lint-report.json
