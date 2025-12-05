@@ -32,7 +32,7 @@ jobs:
           npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-1
 
       # Adds new code from docs
-      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: remark-lint-reporter
           path: remark-lint-report.json
